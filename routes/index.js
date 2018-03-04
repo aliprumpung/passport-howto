@@ -20,12 +20,18 @@ router.get('/', midWAuth ,(req,res,next)=>{
 	res.render('index',{title:'Welcome to Home page'});
 });
 
-router.get('/profile', midWAuth ,(req,res,next)=>{
-	res.render('index');
+router.get('/users', midWAuth ,(req,res,next)=>{
+	res.render('users');
 });
 
 router.get('/login',(req,res,next)=>{
-	res.render('login');
+
+	if (req.isAuthenticated===true){
+	res.redirect('/');
+		
+	}else{
+		res.render('login');
+	}
 });
 router.post('/login',passport.authenticate('local',{
 	successRedirect:'/',
@@ -40,8 +46,8 @@ router.get('/logout',(req,res,next)=>{
 
 
 
-passport.serializeUser((user_id, done)=> { 	done(null, user_id);    });
-passport.deserializeUser((user_id, done)=> {	done(null, user_id);	});
+passport.serializeUser((id, done)=> { 	done(null,id);    });
+passport.deserializeUser((id, done)=> {	done(null,id);	});
 
 
 
