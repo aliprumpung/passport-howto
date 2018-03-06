@@ -33,7 +33,7 @@ router.get('/login',(req,res,next)=>{
 		res.render('login');
 	}
 });
-router.post('/login',passport.authenticate('local.signup',{
+router.post('/login',passport.authenticate('signup',{
 	successRedirect:'/',
 	failureRedirect:'/login'
 }));

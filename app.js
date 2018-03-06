@@ -63,7 +63,7 @@ passport.use('local.signin',new LocalStrategy(
 		}
 	}
 ));
-passport.use('local.signup',new LocalStrategy(
+passport.use('signup',new LocalStrategy(
 	function(uname, pwd, done) {
 
 		/*put the db function here*/
@@ -93,7 +93,7 @@ app.use(function(req, res, next) {
 	/*var err = new Error('Not Found');
 	err.status = 404;
 	next(err);*/
-	res.send('');
+	res.redirect('/');
 
 });
 
