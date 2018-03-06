@@ -33,7 +33,7 @@ router.get('/login',(req,res,next)=>{
 		res.render('login');
 	}
 });
-router.post('/login',passport.authenticate('local',{
+router.post('/login',passport.authenticate('local.signup',{
 	successRedirect:'/',
 	failureRedirect:'/login'
 }));
@@ -46,8 +46,8 @@ router.get('/logout',(req,res,next)=>{
 
 
 
-passport.serializeUser((id, done)=> { 	done(null,id);    });
-passport.deserializeUser((id, done)=> {	done(null,id);	});
+passport.serializeUser((user, done)=> { 	done(null,user.serialized);    });
+passport.deserializeUser((serialized, done)=> {	done(null,{username:serialized});	});
 
 
 
