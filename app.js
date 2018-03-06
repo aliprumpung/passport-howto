@@ -30,7 +30,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({secret:'hello_kitty_30r9203', saveUninitialized: false, resave: false}));//passport
 
 app.use(passport.initialize());//passport
